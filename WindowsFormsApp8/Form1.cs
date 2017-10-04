@@ -22,7 +22,10 @@ namespace WindowsFormsApp8
         {
             InitializeComponent();
         }
+        //***************Global varies********************
         string str;
+        Form2 fem = new Form2();
+        //************************************************
         private void getNumber()
         {
             WebRequest myrequest =
@@ -84,11 +87,13 @@ namespace WindowsFormsApp8
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            CenterToScreen();
+
             textBox1.Enabled = false;
             button1.Visible = false;
             button1.Enabled = false;
             button1.Text = "Loading data...";
-           t1 = new Thread(getNumber);
+            t1 = new Thread(getNumber);
             t1.Start();
         }
 
@@ -102,7 +107,6 @@ namespace WindowsFormsApp8
             
             
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (t1.IsAlive == false)
@@ -114,6 +118,7 @@ namespace WindowsFormsApp8
                 HandlingNuber();
                 timer1.Enabled = false;
                 button1.Visible = true;
+                fem.Close();
             }
         }
 
@@ -133,6 +138,13 @@ namespace WindowsFormsApp8
             {
                 label10.Text = "MeSoHandSoMe!";
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            fem.Show();
+            fem.Opacity = 0.8;
+            timer2.Enabled = false;
         }
     }
 }
