@@ -19,7 +19,7 @@ namespace WindowsFormsApp8
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(Application.StartupPath+"\\loading-drop-resize.gif");
+            pictureBox1.Image = Image.FromFile(Application.StartupPath+"\\loading-form1 size.gif");
             this.BackColor = Color.White;
             this.TransparencyKey = Color.White;
             CenterToScreen();
