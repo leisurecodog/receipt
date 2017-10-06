@@ -24,7 +24,7 @@ namespace WindowsFormsApp8
         }
         //***************Global varies********************
         string str;
-        Form2 fem = new Form2();
+        Form2 fem= new Form2();
         //************************************************
         private void getNumber()
         {
@@ -87,8 +87,10 @@ namespace WindowsFormsApp8
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            button1.Visible = false;
+            //pictureBox1.BackColor = System.Drawing.Color.Transparent;
             CenterToScreen();
-
+            pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\loading-form1 size.gif");
             textBox1.Enabled = false;
             button1.Visible = false;
             button1.Enabled = false;
@@ -118,7 +120,9 @@ namespace WindowsFormsApp8
                 HandlingNuber();
                 timer1.Enabled = false;
                 button1.Visible = true;
-                fem.Close();
+                pictureBox1.Visible = false;
+                pictureBox1.Enabled = false;
+                //fem.Close();
             }
         }
 
@@ -142,8 +146,9 @@ namespace WindowsFormsApp8
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            fem.Show();
-            fem.Opacity = 0.8;
+            //fem.Show();
+            //fem.Opacity = 0.8;
+            
             timer2.Enabled = false;
         }
     }

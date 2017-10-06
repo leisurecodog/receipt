@@ -24,5 +24,10 @@ namespace WindowsFormsApp8
             this.TransparencyKey = Color.White;
             CenterToScreen();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
