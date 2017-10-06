@@ -88,6 +88,7 @@ namespace WindowsFormsApp8
         private void Form1_Load(object sender, EventArgs e)
         {
             button1.Visible = false;
+            pictureBox1.BringToFront();
             //pictureBox1.BackColor = System.Drawing.Color.Transparent;
             CenterToScreen();
             pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\loading-form1 size.gif");
