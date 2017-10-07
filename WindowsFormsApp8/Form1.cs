@@ -87,14 +87,15 @@ namespace WindowsFormsApp8
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            button1.Visible = false;
+            //button1.Visible = false;
+            pictureBox1.BringToFront();
             //pictureBox1.BackColor = System.Drawing.Color.Transparent;
             CenterToScreen();
             pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\loading-form1 size.gif");
             textBox1.Enabled = false;
-            button1.Visible = false;
+            /*button1.Visible = false;
             button1.Enabled = false;
-            button1.Text = "Loading data...";
+            button1.Text = "Loading data...";*/
             t1 = new Thread(getNumber);
             t1.Start();
         }
@@ -113,34 +114,71 @@ namespace WindowsFormsApp8
         {
             if (t1.IsAlive == false)
             {
-                button1.Enabled = true;
+                //button1.Enabled = true;
                 textBox1.Enabled = true;
                 label10.Text = "請輸入想要查詢的發票號碼";
-                button1.Text = "查詢發票號碼";
+                //button1.Text = "查詢發票號碼";
                 HandlingNuber();
                 timer1.Enabled = false;
-                button1.Visible = true;
+                //button1.Visible = true;
                 pictureBox1.Visible = false;
                 pictureBox1.Enabled = false;
                 //fem.Close();
             }
         }
-
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            //判斷中了多少錢
             string num = textBox1.Text;
             int n;
-            if (num == "")
+            if (textBox1.Text == "")
             {
                 label10.Text= "請輸入想要查詢的發票號碼";
             }
-            else if ((Encoding.Default.GetBytes(num).Length != 8) || (!int.TryParse(num, out n)))
+            else if ((Encoding.Default.GetBytes(textBox1.Text).Length != 8) || (!int.TryParse(textBox1.Text, out n)))
             {
                 label10.Text = "請輸入正確的發票號碼";
             }
+            else if(textBox1.Text==label5.Text)
+            {
+                label10.Text = "恭喜您中了1000萬大獎!!!!!";
+            }
+            else if (textBox1.Text == label6.Text)
+            {
+                label10.Text = "恭喜您中了200萬元大獎!!";
+            }
+            else if (textBox1.Text == label7.Text.Substring(0,8) || textBox1.Text == label7.Text.Substring(9, 8) || textBox1.Text == label7.Text.Substring(18, 8))
+            {
+                label10.Text = "恭喜您中了20萬元大獎!";
+            }
+            else if(num.Substring(1,7) == label7.Text.Substring(1, 7) || num.Substring(1,7) == label7.Text.Substring(10, 7) || num.Substring(1,7) == label7.Text.Substring(19, 7))
+            {
+                label10.Text = "恭喜您中了4萬元大獎!";
+            }
+            else if (num.Substring(2, 6) == label7.Text.Substring(2, 6) || num.Substring(2, 6) == label7.Text.Substring(11, 6) || num.Substring(2, 6) == label7.Text.Substring(20, 6))
+            {
+                label10.Text = "恭喜您中了1萬元!";
+            }
+            else if (num.Substring(3, 5) == label7.Text.Substring(3, 5) || num.Substring(3, 5) == label7.Text.Substring(12, 5) || num.Substring(3, 5) == label7.Text.Substring(21, 5))
+            {
+                label10.Text = "恭喜您中了4千元!";
+            }
+            else if (num.Substring(4, 4) == label7.Text.Substring(4 ,4) || num.Substring(4, 4) == label7.Text.Substring(13, 4) || num.Substring(4, 4) == label7.Text.Substring(22, 4))
+            {
+                label10.Text = "恭喜您中了1千元!";
+            }
+            else if (num.Substring(5, 3) == label7.Text.Substring(5, 3) || num.Substring(5, 3) == label7.Text.Substring(14, 3) || num.Substring(5, 3) == label7.Text.Substring(23, 3))
+            {
+                label10.Text = "恭喜您中了200元!";
+            }
+            else if (num.Substring(5, 3) == label9.Text.Substring(0, 3) || num.Substring(5, 3) == label9.Text.Substring(4, 3) || num.Substring(5, 3) == label9.Text.Substring(8, 3))
+            {
+                label10.Text = "恭喜您中了200元!";
+            }
             else
             {
-                label10.Text = "MeSoHandSoMe!";
+                label10.Text = "真可惜沒有中獎QQ";
             }
         }
 
@@ -150,6 +188,16 @@ namespace WindowsFormsApp8
             //fem.Opacity = 0.8;
             
             timer2.Enabled = false;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("我也好想中1000萬喔");
         }
     }
 }
