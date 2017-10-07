@@ -33,6 +33,7 @@ namespace WindowsFormsApp8
             myrequest.Method = "GET";
             WebResponse respon = myrequest.GetResponse();
             myrequest.Timeout = 1000;
+            this.pictureBox1.Image = global::WindowsFormsApp8.Properties.Resources.loading_form1_size;
             StreamReader sr = new StreamReader(respon.GetResponseStream());
             str = sr.ReadToEnd();
             sr.Close();
