@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Threading;
+using WinFormCharpWebCam;
 
 namespace WindowsFormsApp8
 {
@@ -21,24 +22,24 @@ namespace WindowsFormsApp8
         public Form1()
         {
             InitializeComponent();
+            webcam = new WebCam();
+            webcam.InitializeWebCam(ref pictureBox2);
         }
         //***************Global varies********************
+        WebCam webcam;
         string str;
         Form2 fem= new Form2();
         //************************************************
         private void Form1_Load(object sender, EventArgs e)
         {
-            //button1.Visible = false;
             pictureBox1.BringToFront();
-            //pictureBox1.BackColor = System.Drawing.Color.Transparent;
             CenterToScreen();
             pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\loading-form1 size.gif");
             textBox1.Enabled = false;
-            /*button1.Visible = false;
-            button1.Enabled = false;
-            button1.Text = "Loading data...";*/
+
             t1 = new Thread(getNumber);
             t1.Start();
+            webcam.Start();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -219,5 +220,40 @@ namespace WindowsFormsApp8
             label1.Text = "統一發票兌獎:" + one;
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            System.Drawing.Bitmap bitmap = null;
+            //宣告 QRCode Reader 物件
+
+            ZXing.IBarcodeReader reader = new ZXing.BarcodeReader();
+
+            bitmap = (Bitmap)pictureBox2.Image;
+            //進行解碼的動作
+            ZXing.Result result = reader.Decode(bitmap);
+
+            if (result != null)
+            {   //如果有成功解讀，則顯示文字
+                label10.Text = result.Text;
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (timer3.Enabled == false)
+            {
+                timer3.Enabled = true;
+                button1.Text = "ON";
+            }
+            else
+            {
+                timer3.Enabled = false;
+                button1.Text = "OFF";
+            }
+        }
     }
 }

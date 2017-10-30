@@ -71,3 +71,5 @@ D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.Properties.Res
 D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.csproj.GenerateResource.Cache
 D:\aaa\receipt-master\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.exe
 D:\aaa\receipt-master\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.pdb
+C:\Users\user\Documents\GitHub\receipt\WindowsFormsApp8\bin\Debug\WebCam_Capture.dll
+C:\Users\user\Documents\GitHub\receipt\WindowsFormsApp8\bin\Debug\zxing.dll
