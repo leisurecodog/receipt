@@ -71,6 +71,7 @@ namespace WindowsFormsApp8
         {
             //判斷中了多少錢
             price();
+            
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -78,6 +79,16 @@ namespace WindowsFormsApp8
             //fem.Opacity = 0.8;
             
             timer2.Enabled = false;
+        }
+        
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if(e.KeyCode)
+            //MessageBox.Show(e.KeyCode.ToString());
+            if (e.KeyCode.ToString() == "Delete")
+            {
+                textBox1.Text = "";
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -207,5 +218,6 @@ namespace WindowsFormsApp8
             string one = str.Substring(StrLocation + 4, 10);
             label1.Text = "統一發票兌獎:" + one;
         }
+
     }
 }
