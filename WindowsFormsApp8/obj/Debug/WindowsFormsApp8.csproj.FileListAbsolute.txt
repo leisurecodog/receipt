@@ -61,3 +61,13 @@ C:\Users\user\Documents\GitHub\receipt\receipt-master\WindowsFormsApp8\obj\Debug
 C:\Users\user\Documents\GitHub\receipt\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.csproj.CoreCompileInputs.cache
 C:\Users\user\Documents\GitHub\receipt\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.exe
 C:\Users\user\Documents\GitHub\receipt\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.pdb
+D:\aaa\receipt-master\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.exe.config
+D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.exe
+D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.pdb
+D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.csprojResolveAssemblyReference.cache
+D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.Form1.resources
+D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.Form2.resources
+D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.Properties.Resources.resources
+D:\aaa\receipt-master\WindowsFormsApp8\obj\Debug\WindowsFormsApp8.csproj.GenerateResource.Cache
+D:\aaa\receipt-master\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.exe
+D:\aaa\receipt-master\WindowsFormsApp8\bin\Debug\WindowsFormsApp8.pdb
