@@ -51,6 +51,7 @@
             this.Name = "Form2";
             this.ShowInTaskbar = false;
             this.Text = "Form2";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -29,14 +29,15 @@ namespace WindowsFormsApp8
         WebCam webcam;
         string str;
         Form2 fem= new Form2();
+        Point Form_Point;
         //************************************************
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox1.BringToFront();
+            SetBtnTransparent();
+            SetLabelTransparent();
             CenterToScreen();
-            pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\loading-form1 size.gif");
             textBox1.Enabled = false;
-
+            timer2.Enabled = true;
             t1 = new Thread(getNumber);
             t1.Start();
             webcam.Start();
@@ -62,23 +63,18 @@ namespace WindowsFormsApp8
                 HandlingNuber();
                 timer1.Enabled = false;
                 //button1.Visible = true;
-                pictureBox1.Visible = false;
-                pictureBox1.Enabled = false;
-                //fem.Close();
+                fem.Close();
             }
         }
-        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //判斷中了多少錢
-            price();
-            
+            price(); 
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            //fem.Show();
-            //fem.Opacity = 0.8;
-            
+            fem.Show();
+            fem.Opacity = 0.8;
             timer2.Enabled = false;
         }
         
@@ -91,12 +87,6 @@ namespace WindowsFormsApp8
                 textBox1.Text = "";
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label5_Click(object sender, EventArgs e)
         {
             MessageBox.Show("我也好想中1000萬喔");
@@ -166,7 +156,6 @@ namespace WindowsFormsApp8
             myrequest.Method = "GET";
             WebResponse respon = myrequest.GetResponse();
             myrequest.Timeout = 1000;
-            this.pictureBox1.Image = global::WindowsFormsApp8.Properties.Resources.loading_form1_size;
             StreamReader sr = new StreamReader(respon.GetResponseStream());
             str = sr.ReadToEnd();
             sr.Close();
@@ -219,7 +208,42 @@ namespace WindowsFormsApp8
             string one = str.Substring(StrLocation + 4, 10);
             label1.Text = "統一發票兌獎:" + one;
         }
+        private void SetBtn(Button btn)
+        {
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.ForeColor = Color.Transparent;
+            btn.BackColor = Color.Transparent;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
+        }
+        private void SetBtnTransparent()
+        {
+            SetBtn(button2);
+            SetBtn(button3);
+            SetBtn(ButtonScan);
+        }
+        private void SetLabel(Label la)
+        {
+            la.FlatStyle = FlatStyle.Flat;
+         //   la.ForeColor = Color.Transparent;
+            la.BackColor = Color.Transparent;
+        }
+        private void SetLabelTransparent()
+        {
+            SetLabel(label1);
+            SetLabel(label2);
+            SetLabel(label3);
+            SetLabel(label4);
+            SetLabel(label5);
+            SetLabel(label6);
+            SetLabel(label7);
+            SetLabel(label8);
+            SetLabel(label9);
+            SetLabel(label10);
+            SetLabel(label11);
 
+        }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
@@ -247,13 +271,88 @@ namespace WindowsFormsApp8
             if (timer3.Enabled == false)
             {
                 timer3.Enabled = true;
-                button1.Text = "ON";
+                ButtonScan.Text = "ON";
             }
             else
             {
                 timer3.Enabled = false;
-                button1.Text = "OFF";
+                ButtonScan.Text = "OFF";
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button2_MouseHover(object sender, EventArgs e)
+        {
+            button2.Image = Image.FromFile(Application.StartupPath+"\\smallpress.png");
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.Image = Image.FromFile(Application.StartupPath + "\\small.png");
+        }
+
+        private void button3_MouseHover(object sender, EventArgs e)
+        {
+            button3.Image = Image.FromFile(Application.StartupPath + "\\exitpress.png");
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.Image = Image.FromFile(Application.StartupPath + "\\exit.png");
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void ButtonScan_Click(object sender, EventArgs e)
+        {
+            if (timer3.Enabled == false)
+            {
+                timer3.Enabled = true;
+                ButtonScan.Text = "ON";
+                pictureBox2.Visible = true;
+            }
+            else
+            {
+                timer3.Enabled = false;
+                ButtonScan.Text = "OFF";
+                pictureBox2.Visible = false;
+            }
+        }
+
+        private void ButtonScan_MouseHover(object sender, EventArgs e)
+        {
+            ButtonScan.Image = Image.FromFile(Application.StartupPath + "\\buttonpress.png");
+        }
+
+        private void ButtonScan_MouseLeave(object sender, EventArgs e)
+        {
+            ButtonScan.Image = Image.FromFile(Application.StartupPath + "\\button.png");
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Form_Point = new Point(-e.X + SystemInformation.FrameBorderSize.Width, -e.Y - SystemInformation.FrameBorderSize.Height);
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                //新視窗的位置
+                mousePos.Offset(Form_Point.X, Form_Point.Y);
+                //改變視窗位置
+                Location = mousePos;
             }
         }
     }
+    
 }
